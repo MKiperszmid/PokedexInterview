@@ -15,8 +15,11 @@ import com.mk.interviewprocess.ui.theme.Grass
 
 @Composable
 fun DetailStatItem(stat: PokemonStat, barColor: Color, modifier: Modifier = Modifier) {
-    val statColorRange = remember { (stat.value) * 2 }
-    val statColorHidden = remember { (100 - stat.value) * 2 }
+    val statValueRange = remember {
+        if (stat.value > 100) 100 else stat.value
+    }
+    val statFilledRange = remember { (statValueRange) * 2 }
+    val statUnfilledRange = remember { (100 - statValueRange) * 2 }
     Row(
         modifier = modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
@@ -28,8 +31,8 @@ fun DetailStatItem(stat: PokemonStat, barColor: Color, modifier: Modifier = Modi
         ) {
             Text(text = stat.value.toString(), color = Color.White)
             Spacer(modifier = Modifier.width(50.dp))
-            Divider(Modifier.width((statColorRange).dp), color = barColor)
-            Divider(Modifier.width((statColorHidden).dp), color = Color.LightGray)
+            Divider(Modifier.width((statFilledRange).dp), color = barColor)
+            Divider(Modifier.width((statUnfilledRange).dp), color = Color.LightGray)
         }
     }
 }
