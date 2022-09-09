@@ -5,14 +5,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mk.interviewprocess.home.domain.repository.PokedexRepository
+import com.mk.interviewprocess.home.domain.repository.HomeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val repository: PokedexRepository
+    private val repository: HomeRepository
 ) : ViewModel() {
 
     var state by mutableStateOf(HomeState())
