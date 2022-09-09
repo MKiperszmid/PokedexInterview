@@ -11,6 +11,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.mk.interviewprocess.detail.domain.model.PokemonStat
+import com.mk.interviewprocess.ui.theme.Grass
 
 @Composable
 fun DetailStatItem(stat: PokemonStat, barColor: Color, modifier: Modifier = Modifier) {
@@ -25,7 +26,7 @@ fun DetailStatItem(stat: PokemonStat, barColor: Color, modifier: Modifier = Modi
         Row(
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(text = stat.value.toString())
+            Text(text = stat.value.toString(), color = Color.White)
             Spacer(modifier = Modifier.width(50.dp))
             Divider(Modifier.width((statColorRange).dp), color = barColor)
             Divider(Modifier.width((statColorHidden).dp), color = Color.LightGray)
@@ -37,6 +38,7 @@ fun DetailStatItem(stat: PokemonStat, barColor: Color, modifier: Modifier = Modi
 @Composable
 fun DetailStatItemPreview() {
     DetailStatItem(
-        PokemonStat("HP", 99)
+        PokemonStat("HP", 99),
+        barColor = Grass
     )
 }
