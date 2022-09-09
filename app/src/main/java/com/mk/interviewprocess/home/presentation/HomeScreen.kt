@@ -28,14 +28,26 @@ fun HomeScreen(
     }
 
     if (state.pokemons.isNotEmpty()) {
-        Column(modifier = Modifier.fillMaxWidth()) {
-            Text(text = "Pokedex", fontSize = 22.sp, fontWeight = FontWeight.Bold)
-            LazyVerticalGrid(columns = GridCells.Fixed(2)) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(12.dp)
+        ) {
+            Text(
+                text = "Pokedex",
+                fontSize = 32.sp,
+                fontWeight = FontWeight.Bold
+            )
+            Spacer(modifier = Modifier.height(18.dp))
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(2),
+                verticalArrangement = Arrangement.spacedBy(12.dp),
+                horizontalArrangement = Arrangement.spacedBy(12.dp)
+            ) {
                 items(state.pokemons) {
                     PokemonCard(
                         pokemon = it,
-                        onClick = { onPokemonClick(it.id) },
-                        modifier = Modifier.padding(12.dp)
+                        onClick = { onPokemonClick(it.id) }
                     )
                 }
             }
