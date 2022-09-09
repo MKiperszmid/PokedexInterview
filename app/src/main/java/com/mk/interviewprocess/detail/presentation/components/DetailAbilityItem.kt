@@ -9,8 +9,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.mk.interviewprocess.R
 
 @Composable
 fun DetailAbilityItem(
@@ -22,7 +24,7 @@ fun DetailAbilityItem(
         modifier = modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Text(text = "Ability $position: ", color = Color.Gray)
+        Text(text = "${stringResource(R.string.ability)} $position: ", color = Color.Gray)
         Spacer(modifier = Modifier.width(12.dp))
         Text(text = ability, color = Color.White)
     }

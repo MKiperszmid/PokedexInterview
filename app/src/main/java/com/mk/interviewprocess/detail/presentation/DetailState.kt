@@ -7,5 +7,6 @@ import com.mk.interviewprocess.ui.theme.Grass
 data class DetailState(
     val isLoading: Boolean = false,
     val pokemonDetail: PokemonDetail? = null,
-    val mainColor: Color = Grass
+    val mainColor: Color = Grass,
+    val navigateBack: Boolean = false
 )

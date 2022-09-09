@@ -12,6 +12,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import androidx.navigation.navigation
 import com.mk.interviewprocess.detail.presentation.DetailScreen
 import com.mk.interviewprocess.home.presentation.HomeScreen
 import com.mk.interviewprocess.navigation.Route.DETAIL
@@ -44,7 +45,9 @@ class MainActivity : ComponentActivity() {
                                 }
                             )
                         ) {
-                            DetailScreen()
+                            DetailScreen(onBack = {
+                                navController.navigateUp()
+                            })
                         }
                     }
                 }

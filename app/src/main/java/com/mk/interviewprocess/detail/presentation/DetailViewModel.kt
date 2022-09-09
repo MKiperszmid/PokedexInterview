@@ -41,6 +41,16 @@ class DetailViewModel @Inject constructor(
         }
     }
 
+    fun onEvent(event: DetailEvent) {
+        when (event) {
+            DetailEvent.onBackPress -> {
+                state = state.copy(
+                    navigateBack = true
+                )
+            }
+        }
+    }
+
     private fun getMainColor(pokemonDetail: PokemonDetail): Color {
         // TODO: Convert into an Enum of some sort
         if (pokemonDetail.types.any { it.lowercase() == "fire" }) return Fire

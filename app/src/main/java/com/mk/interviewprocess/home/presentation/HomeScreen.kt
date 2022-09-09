@@ -9,10 +9,12 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.mk.interviewprocess.R
 import com.mk.interviewprocess.home.presentation.components.PokemonCard
 
 @Composable
@@ -34,7 +36,7 @@ fun HomeScreen(
                 .padding(12.dp)
         ) {
             Text(
-                text = "Pokedex",
+                text = stringResource(R.string.pokedex),
                 fontSize = 32.sp,
                 fontWeight = FontWeight.Bold
             )
