@@ -69,7 +69,7 @@ fun DetailScreen(
                 }
             }
             item {
-                DetailHeader(pokemon = it, color = state.mainColor)
+                DetailHeader(pokemon = it)
             }
             item {
                 Spacer(modifier = Modifier.height(12.dp))
@@ -98,7 +98,7 @@ fun DetailScreen(
                 }
             }
             items(it.stats) { stat ->
-                DetailStatItem(stat = stat, barColor = state.mainColor)
+                DetailStatItem(stat = stat, barColor = state.pokemonDetail.color.color)
             }
             item {
                 Spacer(modifier = Modifier.height(16.dp))

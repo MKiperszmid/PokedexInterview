@@ -2,11 +2,13 @@ package com.mk.interviewprocess.detail.data.mapper
 
 import com.mk.interviewprocess.detail.data.remote.dto.PokemonDetailResponse
 import com.mk.interviewprocess.detail.data.remote.dto.StatDto
+import com.mk.interviewprocess.detail.domain.model.PokemonColor
 import com.mk.interviewprocess.detail.domain.model.PokemonDetail
 import com.mk.interviewprocess.detail.domain.model.PokemonStat
 import com.mk.interviewprocess.util.capitalize
 
 fun PokemonDetailResponse.toDomain(): PokemonDetail {
+    val types = this.types.map { it.type.name.capitalize() }
     return PokemonDetail(
         id = this.id,
         name = this.name.capitalize(),
@@ -14,7 +16,8 @@ fun PokemonDetailResponse.toDomain(): PokemonDetail {
             it.ability.name.capitalize()
         },
         stats = this.stats.map { it.toDomain() },
-        types = this.types.map { it.type.name.capitalize() }
+        types = types,
+        color = PokemonColor.colorFromList(types)
     )
 }
 
