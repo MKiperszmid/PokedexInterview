@@ -17,6 +17,7 @@ import com.mk.interviewprocess.home.presentation.components.PokemonCard
 
 @Composable
 fun HomeScreen(
+    onPokemonClick: (Int) -> Unit,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
     val state = viewModel.state
@@ -33,7 +34,7 @@ fun HomeScreen(
                 items(state.pokemons) {
                     PokemonCard(
                         pokemon = it,
-                        onClick = { /*TODO*/ },
+                        onClick = { onPokemonClick(it.id) },
                         modifier = Modifier.padding(12.dp)
                     )
                 }
