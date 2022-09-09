@@ -4,10 +4,10 @@ package com.mk.interviewprocess.detail.data.remote.dto
 import com.squareup.moshi.Json
 
 data class AbilityDto(
-    @Json(name = "ability")
+    @field:Json(name = "ability")
     val ability: AbilityX,
-    @Json(name = "is_hidden")
+    @field:Json(name = "is_hidden")
     val isHidden: Boolean,
-    @Json(name = "slot")
+    @field:Json(name = "slot")
     val slot: Int
 )

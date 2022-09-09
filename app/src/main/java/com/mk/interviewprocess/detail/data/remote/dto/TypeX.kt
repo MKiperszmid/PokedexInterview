@@ -4,8 +4,8 @@ package com.mk.interviewprocess.detail.data.remote.dto
 import com.squareup.moshi.Json
 
 data class TypeX(
-    @Json(name = "name")
+    @field:Json(name = "name")
     val name: String,
-    @Json(name = "url")
+    @field:Json(name = "url")
     val url: String
 )

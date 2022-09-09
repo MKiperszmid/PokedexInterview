@@ -3,20 +3,20 @@ package com.mk.interviewprocess.detail.data.remote.dto
 import com.squareup.moshi.Json
 
 data class PokemonDetailResponse(
-    @Json(name = "abilities")
+    @field:Json(name = "abilities")
     val abilities: List<AbilityDto>,
-    @Json(name = "base_experience")
+    @field:Json(name = "base_experience")
     val baseExperience: Int,
-    @Json(name = "height")
+    @field:Json(name = "height")
     val height: Int,
-    @Json(name = "id")
+    @field:Json(name = "id")
     val id: Int,
-    @Json(name = "name")
+    @field:Json(name = "name")
     val name: String,
-    @Json(name = "stats")
+    @field:Json(name = "stats")
     val stats: List<StatDto>,
-    @Json(name = "types")
+    @field:Json(name = "types")
     val types: List<TypeDto>,
-    @Json(name = "weight")
+    @field:Json(name = "weight")
     val weight: Int
 )

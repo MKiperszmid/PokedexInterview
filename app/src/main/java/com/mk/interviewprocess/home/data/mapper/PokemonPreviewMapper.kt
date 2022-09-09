@@ -2,6 +2,7 @@ package com.mk.interviewprocess.home.data.mapper
 
 import com.mk.interviewprocess.home.data.remote.dto.PokemonPreviewDto
 import com.mk.interviewprocess.home.domain.model.PokemonPreview
+import com.mk.interviewprocess.util.capitalize
 import java.util.*
 
 fun PokemonPreviewDto.toDomain(): PokemonPreview {
@@ -10,7 +11,7 @@ fun PokemonPreviewDto.toDomain(): PokemonPreview {
     val pokemonId = image?.groups?.get(1)?.value ?: 1
     return PokemonPreview(
         id = Integer.valueOf(pokemonId.toString()),
-        name = this.name.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() },
+        name = this.name.capitalize(),
         url = this.url
     )
 }
