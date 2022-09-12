@@ -48,72 +48,81 @@ fun DetailScreen(
     }
     state.pokemonDetail?.let {
         val context = LocalContext.current
-        LazyColumn(
+        Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(12.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            item {
-                Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
-                    IconButton(
-                        onClick = { viewModel.onEvent(DetailEvent.onBackPress) }
+            Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
+                IconButton(
+                    onClick = { viewModel.onEvent(DetailEvent.onBackPress) }
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.ArrowBack,
+                        contentDescription = stringResource(
+                            R.string.back
+                        )
+                    )
+                }
+            }
+            LazyColumn(
+                modifier = Modifier.padding(12.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                item {
+                }
+                item {
+                    DetailHeader(pokemon = it)
+                }
+                item {
+                    Spacer(modifier = Modifier.height(12.dp))
+                }
+                item {
+                    AsyncImage(
+                        model = ImageRequest.Builder(context)
+                            .data(it.image)
+                            .crossfade(true)
+                            .build(),
+                        contentDescription = it.name,
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier.size(250.dp)
+                    )
+                }
+                item {
+                    Spacer(modifier = Modifier.height(30.dp))
+                }
+                item {
+                    Box(
+                        contentAlignment = Alignment.CenterStart,
+                        modifier = Modifier.fillMaxWidth()
                     ) {
-                        Icon(
-                            imageVector = Icons.Default.ArrowBack,
-                            contentDescription = stringResource(
-                                R.string.back
-                            )
+                        Text(
+                            text = stringResource(R.string.stats),
+                            color = Color.White,
+                            fontSize = 18.sp
                         )
                     }
                 }
-            }
-            item {
-                DetailHeader(pokemon = it)
-            }
-            item {
-                Spacer(modifier = Modifier.height(12.dp))
-            }
-            item {
-                AsyncImage(
-                    model = ImageRequest.Builder(context)
-                        .data(it.image)
-                        .crossfade(true)
-                        .build(),
-                    contentDescription = it.name,
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier.size(250.dp)
-                )
-            }
-            item {
-                Spacer(modifier = Modifier.height(30.dp))
-            }
-            item {
-                Box(contentAlignment = Alignment.CenterStart, modifier = Modifier.fillMaxWidth()) {
-                    Text(
-                        text = stringResource(R.string.stats),
-                        color = Color.White,
-                        fontSize = 18.sp
-                    )
+                items(it.stats) { stat ->
+                    DetailStatItem(stat = stat, barColor = state.pokemonDetail.color.color)
                 }
-            }
-            items(it.stats) { stat ->
-                DetailStatItem(stat = stat, barColor = state.pokemonDetail.color.color)
-            }
-            item {
-                Spacer(modifier = Modifier.height(16.dp))
-            }
-            item {
-                Box(contentAlignment = Alignment.CenterStart, modifier = Modifier.fillMaxWidth()) {
-                    Text(
-                        text = stringResource(R.string.abilities),
-                        color = Color.White,
-                        fontSize = 18.sp
-                    )
+                item {
+                    Spacer(modifier = Modifier.height(16.dp))
                 }
-            }
-            itemsIndexed(it.abilities) { index, ability ->
-                DetailAbilityItem(ability = ability, position = index + 1)
+                item {
+                    Box(
+                        contentAlignment = Alignment.CenterStart,
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Text(
+                            text = stringResource(R.string.abilities),
+                            color = Color.White,
+                            fontSize = 18.sp
+                        )
+                    }
+                }
+                itemsIndexed(it.abilities) { index, ability ->
+                    DetailAbilityItem(ability = ability, position = index + 1)
+                }
             }
         }
     }
