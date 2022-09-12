@@ -1,4 +1,4 @@
-package com.mk.interviewprocess.home
+package com.mk.interviewprocess.home.data.repository
 
 import com.mk.interviewprocess.home.domain.model.PokemonPreview
 import com.mk.interviewprocess.home.domain.repository.HomeRepository
